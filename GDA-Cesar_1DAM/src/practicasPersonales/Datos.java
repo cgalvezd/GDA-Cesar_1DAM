@@ -1,0 +1,47 @@
+package practicasPersonales;
+
+public class Datos {
+	static String[] servicios = {
+		    "1;Pedro López;CONSULTA;45.50",
+		    "2;María García;CIRUGIA;350.00",
+		    "3;Juan Pérez;TRATAMIENTO;78.90",
+		    "4;Lucía Martín;CONSULTA;40.00",
+		    "5;Carlos Sánchez;CONSULTA;42.00",
+		    "6;Ana Ruiz;TRATAMIENTO;65.75",
+		    "7;Javier Gómez;CIRUGIA;420.00",
+		    "8;Laura Fernández;CONSULTA;39.90",
+		    "9;Miguel Torres;TRATAMIENTO;82.30",
+		    "10;Elena Morales;CONSULTA;41.00",
+		    "11;Antonio Navarro;CIRUGIA;510.00",
+		    "12;Carmen Ortega;CONSULTA;38.50",
+		    "13;David Romero;TRATAMIENTO;70.00",
+		    "14;Isabel Molina;CONSULTA;44.00",
+		    "15;Francisco Jiménez;CIRUGIA;600.00",
+		    "16;Paula Serrano;TRATAMIENTO;76.80",
+		    "17;Alberto Gil;CONSULTA;43.20",
+		    "18;Natalia Cruz;CONSULTA;40.50",
+		    "19;Pedro López;TRATAMIENTO;67.40",
+		    "20;María García;CONSULTA;41.80",
+		    "21;Juan Pérez;CIRUGIA;395.00",
+		    "22;Lucía Martín;TRATAMIENTO;72.60",
+		    "23;Carlos Sánchez;CONSULTA;39.50",
+		    "24;Ana Ruiz;CIRUGIA;460.00",
+		    "25;Javier Gómez;TRATAMIENTO;74.90",
+		    "26;Laura Fernández;CONSULTA;42.10",
+		    "27;Miguel Torres;CONSULTA;40.00",
+		    "28;Elena Morales;TRATAMIENTO;69.30",
+		    "29;Antonio Navarro;CONSULTA;43.70",
+		    "30;Carmen Ortega;TRATAMIENTO;71.20",
+		    "31;David Romero;CIRUGIA;530.00",
+		    "32;Isabel Molina;CONSULTA;44.60",
+		    "33;Francisco Jiménez;TRATAMIENTO;79.00",
+		    "34;Paula Serrano;CONSULTA;41.30",
+		    "35;Alberto Gil;TRATAMIENTO;68.80",
+		    "36;Natalia Cruz;CIRUGIA;410.00",
+		    "37;Pedro López;CONSULTA;42.50",
+		    "38;María García;TRATAMIENTO;75.40",
+		    "39;Juan Pérez;CONSULTA;40.90",
+		    "40;Lucía Martín;CIRUGIA;480.00"
+		};
+
+}

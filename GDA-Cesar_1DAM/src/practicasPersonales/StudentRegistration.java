@@ -36,7 +36,6 @@ public class StudentRegistration {
 
 	@Override
 	public int hashCode() {
-		return registrationId.hashCode();
+		return Objects.hash(registrationId);
 	}
-
 }
