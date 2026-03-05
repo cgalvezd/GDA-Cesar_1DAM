@@ -1,0 +1,5 @@
+Laura;19;Madrid
+Carlos;22;Sevilla
+Marta;20;Valencia
+Juan Carlos;22;Barcelona
+Juan Asturias;24;Málaga
