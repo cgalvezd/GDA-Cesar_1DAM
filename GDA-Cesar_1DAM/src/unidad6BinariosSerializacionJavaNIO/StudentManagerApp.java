@@ -159,3 +159,4 @@ public class StudentManagerApp {
         JOptionPane.showMessageDialog(null, message, "Class Average", JOptionPane.INFORMATION_MESSAGE);
     }
 }
+

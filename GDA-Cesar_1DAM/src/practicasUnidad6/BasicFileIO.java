@@ -20,12 +20,13 @@ public class BasicFileIO {
 		// Validamos si el archivo ya existe.
 		if (file.exists()) {
 			System.out.println("File already exists. ");
+			return;
 		}
 
 		// Apertura del FileWriter en modo append
 		try {
 			FileWriter writer = new FileWriter(file, true);
-
+			
 			// Pedimos valores
 			for (int i = 0; i < records; i++) {
 				System.out.println("Enter the student name:  ");
@@ -78,3 +79,4 @@ public class BasicFileIO {
 
 	}
 }
+
