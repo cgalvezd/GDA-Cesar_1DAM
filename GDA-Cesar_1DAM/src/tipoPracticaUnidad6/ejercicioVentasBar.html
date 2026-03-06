@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ventas Bar v2 – Ejercicio Java Ficheros</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --ink: #1a1612;
+    --surface: #ffffff;
+    --surface2: #ede8df;
+    --accent: #c8410a;
+    --accent2: #1e6b3a;
+    --accent3: #1a4a8a;
+    --muted: #7a7268;
+    --border: #d4cdc2;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Bricolage Grotesque', sans-serif;
+    --radius: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 40px 56px 36px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 24px;
+  }
+
+  header h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  header h1 em {
+    color: #e8a060;
+    font-style: normal;
+  }
+
+  header p {
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #a09880;
+    letter-spacing: 1px;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    padding-top: 6px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  .tag-red   { background: var(--accent);  color: #fff; }
+  .tag-green { background: var(--accent2); color: #fff; }
+  .tag-blue  { background: var(--accent3); color: #fff; }
+  .tag-dark  { background: #2a2520;        color: var(--bg); }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 52px 32px 80px;
+    display: grid;
+    gap: 40px;
+  }
+
+
+
+
+  /* ── SECTION BLOCK ── */
+  .block { }
+
+  .block-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .block-num {
+    width: 32px; height: 32px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .block-label h2 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .card-body { padding: 28px 32px; }
+
+  p + p { margin-top: 10px; }
+  p { color: #3a3430; }
+
+  strong { color: var(--ink); }
+
+  ul, ol { padding-left: 22px; }
+  li { color: #3a3430; line-height: 1.9; }
+  li + li { margin-top: 2px; }
+
+  code {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 6px;
+    color: var(--accent);
+  }
+
+  /* ── TWO COLS ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  /* ── IO BOX ── */
+  .io-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .io-label::after {
+    content:'';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  pre {
+    background: #1a1612;
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: #c8c0b0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  pre .hi { color: #e8a060; font-weight: 600; }
+  pre .lo { color: #7ec8a0; }
+  pre .cm { color: #5a7a5a; font-style: italic; }
+
+  /* ── SYNTAX ── */
+  .kw  { color: #c06a3a; font-weight: 600; }
+  .cm2 { color: #5a7060; font-style: italic; }
+  .str { color: #7eaa60; }
+  .num { color: #6a9ec8; }
+  .cl  { color: #d4982a; font-weight: 600; }
+  .fn  { color: #5a9ad4; }
+  .ann { color: #9a7ac8; }
+
+  /* ── INDICATORS TABLE ── */
+  .ind-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .ind-table thead tr {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .ind-table th {
+    padding: 13px 18px;
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ind-table td {
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+    color: #3a3430;
+  }
+
+  .ind-table tr:last-child td { border-bottom: none; }
+
+  .ind-table tr:nth-child(even) td { background: #faf7f2; }
+
+  .ind-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+
+  .ib-red   { background: #fde8df; color: var(--accent);  border: 1px solid #f0c0a0; }
+  .ib-green { background: #dff0e8; color: var(--accent2); border: 1px solid #a0d0b4; }
+  .ib-blue  { background: #ddeaf8; color: var(--accent3); border: 1px solid #a0c0e8; }
+  .ib-dark  { background: #e8e4de; color: #3a3430;        border: 1px solid #c8c0b4; }
+
+  /* check/cross */
+  .check { color: var(--accent2); font-weight: 700; }
+  .cross { color: var(--accent);  font-weight: 700; }
+
+  /* divider */
+  hr { border: none; border-top: 1.5px solid var(--border); margin: 0; }
+
+  /* note box */
+  .note {
+    background: #fff8ee;
+    border-left: 4px solid #e8a060;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    font-size: 0.88rem;
+    color: #5a4a30;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 720px) {
+    header { grid-template-columns: 1fr; padding: 28px 20px; }
+    header h1 { font-size: 2.2rem; }
+    .two-col { grid-template-columns: 1fr; }
+    main { padding: 28px 16px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Ventas <em>Bar</em></h1>
+    <p>DAM · Programación · Ficheros de texto</p>
+
+    <div class="card" style="margin-top: 24px;">
+      <div class="card-body" style="padding: 0;">
+        <div style="padding: 16px 24px; background: var(--surface2); border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 13px; font-weight: 600; text-transform: uppercase; color: var(--muted); letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between;">
+          <span>Actividad de evaluación</span>
+          <span style="color: var(--accent); font-size: 11px;">Programación</span>
+        </div>
+        <table class="ind-table">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Duración</th>
+              <th>Eval.</th>
+              <th>Unidad</th>
+              <th>Puntos</th>
+              <th>RA</th>
+              <th>Criterios</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>05/03/2026</td>
+              <td>100'</td>
+              <td>2º</td>
+              <td>6</td>
+              <td><a href="#" style="color: var(--accent); font-weight: 700; text-decoration: none;">5</a></td>
+              <td>5</td>
+              <td style="padding: 10px 18px;">
+                <span class="ind-badge ib-dark">ce5.d</span>
+                <span class="ind-badge ib-dark">ce5.e</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="padding: 20px 24px; font-size: 13.5px; border-top: 1px solid var(--border); background: #fffcf8; color: #5a4a30;">
+          <strong style="color: var(--accent); text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; margin-right: 6px;">Instrucciones:</strong> 
+          La entrega de los ejercicios se realizará individualmente, a través del repositorio.
+          <div style="margin-top: 8px;">
+            Los ficheros deben alojarse en un paquete <code>src.unidades.unidad6.ejercicio1</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</header>
+
+<main>
+
+
+<!-- ══════════════════ 1 · ENUNCIADO ══════════════════ -->
+<div class="block">
+  <div class="block-label">
+    <div class="block-num">1</div>
+    <h2>Enunciado</h2>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <p>Tomás, el propietario de un bar, registra diariamente las ventas de su local en un fichero de texto llamado <code>ventas.txt</code>. Cada línea del fichero contiene el nombre del día de la semana y el importe de ventas de ese día, separados por el carácter <code>|</code>.</p>
+
+      <p style="margin-top:14px;">Ejemplo de línea: <code>MARTES|185.50</code></p>
+
+      <p style="margin-top:14px;">Tomás quiere obtener un <strong>resumen de ventas totales por día de la semana</strong>. Para ello debes desarrollar un programa Java que:</p>
+
+      <ol style="margin:14px 0 0 24px;">
+        <li>Lea el fichero <code>ventas.txt</code>, que contiene <strong>al menos 30 registros</strong> en los que aparecen, mezclados y en orden arbitrario, los días de la semana: LUNES, MARTES, MIÉRCOLES, JUEVES, VIERNES, SÁBADO y DOMINGO.</li>
+        <li>Acumule la suma de ventas de cada día de la semana.</li>
+        <li>Escriba en el fichero <code>resultados.txt</code> una línea por día, con el formato <code>DÍA:total</code>. Ejemplo: <code>LUNES:584.50</code></li>
+        <li>El orden de escritura en el fichero de salida debe seguir el orden natural de la semana: LUNES, MARTES, MIÉRCOLES, JUEVES, VIERNES, SÁBADO, DOMINGO.</li>
+        <li>Los días sin ventas registradas no deben aparecer en el fichero de salida.</li>
+      </ol>
+
+      <div class="note">
+        ⚠️ El fichero <code>ventas.txt</code> puede contener registros de cualquier día de la semana en cualquier orden y puede haber varios registros del mismo día.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 2 · FICHERO DE ENTRADA ══════════════════ -->
+<div class="block">
+  <div class="block-label">
+    <div class="block-num">2</div>
+    <h2>Fichero de Entrada — ventas.txt</h2>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="io-label">ventas.txt · 35 registros</div>
+      <pre><span class="cm">// Formato: DÍA|importe</span>
+MARTES|185.50
+JUEVES|320.75
+SABADO|540.00
+DOMINGO|210.30
+MIERCOLES|275.60
+VIERNES|430.20
+MARTES|195.80
+SABADO|610.45
+JUEVES|298.10
+DOMINGO|185.90
+LUNES|120.00
+MIERCOLES|310.50
+VIERNES|475.30
+MARTES|220.40
+LUNES|145.75
+JUEVES|335.60
+SABADO|580.90
+DOMINGO|240.15
+MIERCOLES|290.80
+VIERNES|510.65
+MARTES|175.20
+LUNES|130.50
+SABADO|625.30
+JUEVES|305.45
+DOMINGO|195.70
+MIERCOLES|265.90
+VIERNES|490.10
+MARTES|210.60
+LUNES|155.30
+SABADO|595.80
+JUEVES|315.25
+DOMINGO|225.40
+MIERCOLES|280.70
+VIERNES|465.50
+MARTES|200.90</pre>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 3 · FICHERO DE SALIDA ══════════════════ -->
+<div class="block">
+  <div class="block-label">
+    <div class="block-num">3</div>
+    <h2>Fichero de Salida Esperado — resultados.txt</h2>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="two-col">
+        <div>
+          <div class="io-label">resultados.txt</div>
+          <pre>LUNES:<span class="hi">551.55</span>
+MARTES:<span class="hi">1188.40</span>
+MIERCOLES:<span class="hi">1423.50</span>
+JUEVES:<span class="hi">1575.15</span>
+VIERNES:<span class="hi">2371.75</span>
+SABADO:<span class="hi">2952.45</span>
+DOMINGO:<span class="hi">1057.45</span></pre>
+        </div>
+        <div>
+          <div class="io-label">Desglose de cálculo</div>
+          <pre><span class="cm">LUNES:    120.00+145.75+130.50+155.30 = 551.55</span>
+<span class="cm">MARTES:   185.50+195.80+220.40
+          +175.20+210.60+200.90 = 1188.40</span>
+<span class="cm">MIERCOLES:275.60+310.50+290.80
+          +265.90+280.70 = 1423.50</span>
+<span class="cm">JUEVES:   320.75+298.10+335.60
+          +305.45+315.25 = 1575.15</span>
+<span class="cm">VIERNES:  430.20+475.30+510.65
+          +490.10+465.50 = 2371.75</span>
+<span class="cm">SABADO:   540.00+610.45+580.90
+          +625.30+595.80 = 2952.45</span>
+<span class="cm">DOMINGO:  210.30+185.90+240.15
+          +195.70+225.40 = 1057.45</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ══════════════════ 5 · RELACIÓN COMPLETA ══════════════════ -->
+<div class="block">
+  <div class="block-label">
+    <div class="block-num">5</div>
+    <h2>Relación Criterios → Indicadores → Código</h2>
+  </div>
+  <div class="card">
+    <div class="card-body" style="padding:0;">
+      <table class="ind-table">
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>Ind.</th>
+            <th>Lo que debe demostrar el alumno</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="4"><span class="ind-badge ib-red">Ce5d · 1</span></td>
+            <td><span class="ind-badge ib-red">IL 1.1</span></td>
+            <td>Abre correctamente un fichero de texto para lectura</td>
+           
+          </tr>
+          <tr>
+            <td><span class="ind-badge ib-red">IL 1.2</span></td>
+            <td>Lee la totalidad del contenido del fichero sin perder registros</td>
+          
+          </tr>
+          <tr>
+            <td><span class="ind-badge ib-red">IL 1.3</span></td>
+            <td>Crea y abre un fichero de texto para escritura de resultados</td>
+           
+          </tr>
+          <tr>
+            <td><span class="ind-badge ib-red">IL 1.4</span></td>
+            <td>Garantiza que los datos se persisten correctamente (cierre del flujo)</td>
+           
+          </tr>
+          <tr>
+            <td rowspan="5"><span class="ind-badge ib-green">Ce5d · 2</span></td>
+            <td><span class="ind-badge ib-green">IL 2.1</span></td>
+            <td>Acceso secuencial con buffer para lectura línea a línea</td>
+          
+          </tr>
+          <tr>
+            <td><span class="ind-badge ib-green">IL 2.2</span></td>
+            <td>Acceso secuencial con buffer para escritura eficiente</td>
+           
+          </tr>
+          <tr>
+            <td><span class="ind-badge ib-green">IL 2.3</span></td>
+            <td>Parsea el formato del fichero usando el delimitador correcto</td>
+          
+          </tr>
+          <tr>
+            <td><span class="ind-badge ib-green">IL 2.4</span></td>
+            <td>Convierte los datos leídos al tipo necesario para su procesamiento</td>
+           
+          </tr>
+          <tr>
+            <td><span class="ind-badge ib-green">IL 2.5</span></td>
+            <td>Gestiona las excepciones de E/S con mensajes de error descriptivos</td>
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</main>
+</body>
+</html>
