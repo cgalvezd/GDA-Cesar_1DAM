@@ -35,7 +35,7 @@ public class FinalPractice {
 				bw.write(name);
 
 				System.out.println("Precio del producto: " + (i + 1));
-				double price = scanner.nextDouble();
+				int price = scanner.nextInt();
 				bw.write(price);
 
 			}
