@@ -99,6 +99,7 @@ public class InventoryManagerApp {
     /**
      * Algoritmo de examen: Busca el valor máximo recorriendo las filas de la tabla[cite: 1193].
      */
+
     private static void findMostExpensiveProduct() {
         int rowCount = tableModel.getRowCount();
         if (rowCount == 0) {

@@ -8,6 +8,10 @@ import java.io.IOException;
 
 public class EfficientExamIO {
 
+	/**
+	 * @param inputFile
+	 * @param outputFile
+	 */
 	public static void processExamFiles(String inputFile, String outputFile) {
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));

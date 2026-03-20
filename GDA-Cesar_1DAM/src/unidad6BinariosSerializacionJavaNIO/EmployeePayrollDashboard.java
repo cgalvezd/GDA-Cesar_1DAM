@@ -65,9 +65,6 @@ public class EmployeePayrollDashboard {
         frame.setVisible(true);
     }
 
-    /**
-     * Añade un empleado a la tabla tras validar los datos.
-     */
     private static void hireEmployee() {
         String name = nameField.getText().trim();
         String dept = deptField.getText().trim();

@@ -2,6 +2,10 @@ package practicasPersonales;
 
 import java.util.Objects;
 
+/**
+ * Clase Athlete, representa a un atleta. La identidad del objeto se define por
+ * su DNI.
+ */
 public class Athlete {
 
 	// Atributos
@@ -9,16 +13,25 @@ public class Athlete {
 	private String lastName;
 	private int age;
 
-	// Constructor
+	/**
+	 * @param dni      Documento nacional de identidad
+	 * @param lastName Appellido completo del atleta
+	 * @param age      Edad del atleta
+	 */
 	public Athlete(String dni, String lastName, int age) {
 		this.dni = dni;
 		this.lastName = lastName;
 		this.age = age;
 	}
 
-	// Métodos
-	// 2 atletas son el mismo si tienen el mismo DNI (Sin importar mayúsculas y
-	// minúsculas)
+	/**
+	 * Método que compara dos ojetos. 2 Atletas son iguales si tienen el mismo DNI,
+	 * ignorando mayúsculas y minúsculas.
+	 * 
+	 * @param compara si el DNI de un objeto es igual al DNI de otro objeto.
+	 * @return{@code true} si los DNI coinciden {@code false} si los DNI no coinciden.
+	 */
+
 	@Override
 	public boolean equals(Object otherAthlete) {
 		if (this == otherAthlete)
@@ -29,6 +42,7 @@ public class Athlete {
 		Athlete athlete = (Athlete) otherAthlete;
 		return Objects.equals(dni.toLowerCase(), athlete.dni.toLowerCase());
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(dni.toLowerCase());

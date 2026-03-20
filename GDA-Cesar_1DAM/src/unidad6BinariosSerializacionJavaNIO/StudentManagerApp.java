@@ -13,8 +13,7 @@ public class StudentManagerApp {
     // Componentes a nivel de clase para ser accesibles desde los métodos estáticos
     private static DefaultTableModel tableModel;
     private static JTextField nameField;
-    private static JTextField ageField;
-    private static JTextField gradeField;
+    private static JTextField ageField; private static JTextField gradeField;
 
     public static void main(String[] args) {
         
@@ -70,11 +69,7 @@ public class StudentManagerApp {
 
         frame.setVisible(true);
     }
-
-    /**
-     * Carga los alumnos desde el archivo alumnos.txt a la tabla al arrancar [cite: 1049, 1077-1088].
-     */
-    private static void loadExistingStudents() {
+      private static void loadExistingStudents() {
         File file = new File(FILE_PATH);
         if (!file.exists()) return; // Si no existe, simplemente no cargamos nada
 
